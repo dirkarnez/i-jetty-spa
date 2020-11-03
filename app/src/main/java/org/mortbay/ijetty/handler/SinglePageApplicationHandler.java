@@ -50,10 +50,8 @@ public class SinglePageApplicationHandler extends org.eclipse.jetty.server.handl
         String requestURI = request.getRequestURI();
         requestURI = StringUtil.replace(requestURI, "<", "&lt;");
         requestURI = StringUtil.replace(requestURI, ">", "&gt;");
-        //String contentType = getContentType(requestURI);
 
         OutputStream out = response.getOutputStream();
-        //ByteArrayISO8859Writer writer = new ByteArrayISO8859Writer(1500);
 
         byte[] barr = null;
         String contentType = getContentType(requestURI);
@@ -68,53 +66,6 @@ public class SinglePageApplicationHandler extends org.eclipse.jetty.server.handl
         out.write(barr);
         response.setContentLength(barr.length);
         response.setContentType(contentType);
-
-//        Server server = getServer();
-//        Handler[] handlers = server == null ? null : server.getChildHandlersByClass(ContextHandler.class);
-
-//        int i = 0;
-//        for (; handlers != null && i < handlers.length; i++) {
-//            if (i == 0)
-//                writer.write("<p>Available contexts are: </p><ul>");
-//
-//            ContextHandler context = (ContextHandler) handlers[i];
-//            if (context.isRunning()) {
-//                writer.write("<li><a href=\"");
-//                if (context.getVirtualHosts() != null && context.getVirtualHosts().length > 0)
-//                    writer.write("http://" + context.getVirtualHosts()[0] + ":" + request.getLocalPort());
-//                writer.write(context.getContextPath());
-//                if (context.getContextPath().length() > 1 && context.getContextPath().endsWith("/"))
-//                    writer.write("/");
-//                writer.write("\">");
-//                writer.write(context.getContextPath());
-//                if (context.getVirtualHosts() != null && context.getVirtualHosts().length > 0)
-//                    writer.write("&nbsp;@&nbsp;" + context.getVirtualHosts()[0] + ":" + request.getLocalPort());
-//                writer.write("&nbsp;--->&nbsp;");
-//                writer.write(context.toString());
-//                writer.write("</a></li>\n");
-//            } else {
-//                writer.write("<li>");
-//                writer.write(context.getContextPath());
-//                if (context.getVirtualHosts() != null && context.getVirtualHosts().length > 0)
-//                    writer.write("&nbsp;@&nbsp;" + context.getVirtualHosts()[0] + ":" + request.getLocalPort());
-//                writer.write("&nbsp;--->&nbsp;");
-//                writer.write(context.toString());
-//                if (context.isFailed())
-//                    writer.write(" [failed]");
-//                if (context.isStopped())
-//                    writer.write(" [stopped]");
-//                writer.write("</li>\n");
-//            }
-//
-//            if (i == handlers.length - 1)
-//                writer.write("</ul>\n");
-//        }
-
-
-        //writer.flush();
-        //response.setContentLength(writer.size());
-
-        //writer.writeTo(out);
         out.close();
     }
 
