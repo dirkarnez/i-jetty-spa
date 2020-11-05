@@ -38,7 +38,7 @@ public class SinglePageApplicationHandler extends org.eclipse.jetty.server.handl
 
         baseRequest.setHandled(true);
 
-        String method = request.getMethod();
+//        String method = request.getMethod();
 
 //        if (!method.equals(HttpMethods.GET) || !request.getRequestURI().equals("/")) {
 //            response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -55,6 +55,7 @@ public class SinglePageApplicationHandler extends org.eclipse.jetty.server.handl
 
         byte[] barr = null;
         String contentType = getContentType(requestURI);
+        // Not homepage, not a route has extension, try to read as an asset
         if (!requestURI.equals("/") && !MimeTypes.TEXT_HTML_UTF_8.equals(contentType)) {
             barr = readFile(WEB_DIR_PATH + requestURI);
         }
@@ -134,7 +135,7 @@ public class SinglePageApplicationHandler extends org.eclipse.jetty.server.handl
                 case "html":
                     return MimeTypes.TEXT_HTML_UTF_8;
                 default:
-                    return "text/plain";
+                    return "application/octet-stream";
             }
         }
         // it is a route then
