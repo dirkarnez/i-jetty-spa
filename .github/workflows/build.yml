@@ -59,7 +59,7 @@ jobs:
       uses: android-actions/setup-android@v2
 
     - name: Build Repo
-      run: ./gradlew --no-daemon build
+      run: chmod  777 ./gradlew && ./gradlew --no-daemon build
 
     - name: Upload APKs to Release
       uses: svenstaro/upload-release-action@v2
