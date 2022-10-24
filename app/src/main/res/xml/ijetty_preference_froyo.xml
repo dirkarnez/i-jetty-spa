@@ -28,7 +28,7 @@
             android:key="pref2_screen">
             
     <CheckBoxPreference
-            android:id="@+id/ssl_nio"
+            android:id="@+id/ssl_key"
             android:defaultValue="@string/pref_ssl_value" 
             android:title="@string/pref_ssl_title"
             android:key="@string/pref_ssl_key"/>
